@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        IMAGEN = "fjhuete/polls"
+        IMAGEN = "fjhuete/icdc"
         USUARIO = 'DockerHub'
     }
     agent none
@@ -15,18 +15,18 @@ pipeline {
             stages {
                 stage('Clone') {
                     steps {
-                        git branch:'master',url:'https://github.com/fjhuete/django_tutorial.git'
+                        git branch:'main',url:'https://github.com/fjhuete/prueba_icdc.git'
                     }
                 }
                 stage('Install') {
                     steps {
-                        sh 'pip install -r requirements.txt'
+                        sh 'pip install -r app/requirements.txt'
                     }
                 }
                 stage('Test')
                 {
                     steps {
-                        sh 'python3 manage.py test --settings=django_tutorial.settings_desarrollo'
+                        sh 'pytest test_app.py'
                     }
                 }
             }
