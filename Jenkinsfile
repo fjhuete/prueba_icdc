@@ -64,7 +64,7 @@ pipeline {
                 stage ('Despliegue en el VPS'){
                     steps{
                         sshagent(credentials : ['Pignite']) {
-                        sh 'ssh -o StrictHostKeyChecking=no debian@pignite.javihuete.site "cd django_tutorial && git pull && docker compose down && docker pull fjhuete/polls:latest && docker compose up -d && docker image prune -f"'
+                        sh 'ssh -o StrictHostKeyChecking=no debian@pignite.javihuete.site "cd prueba_icdc && git pull && docker compose down && docker pull fjhuete/icdc:latest && docker compose up -d && docker image prune -f"'
                         }
                     }
                 }
@@ -74,8 +74,8 @@ pipeline {
     post {
         always {
         mail to: 'fjhuete.m@gmail.com',
-        subject: "Estado del pipeline: ${currentBuild.fullDisplayName}",
-        body: "El despliegue ${env.BUILD_URL} ha tenido como resultado: ${currentBuild.result}"
+        subject: "Despliegue de $IMAGEN: ${currentBuild.fullDisplayName}",
+        body: "El despliegue ${env.BUILD_URL} de $IMAGEN ha tenido como resultado: ${currentBuild.result}"
         }
     }
 }
