@@ -19,7 +19,7 @@ def inicio():
     try:
         nombre=os.environ["NOMBRE"]
     except:
-        nombre="xxx"
+        nombre="xxxx"
     return "<h1>Aplicación de: "+nombre+"</h1><br/><h2>"+str(contador)+" visitas.</h2>"
 
 if __name__ == '__main__':
