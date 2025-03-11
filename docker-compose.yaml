@@ -9,5 +9,5 @@ services:
     environment:
       - NOMBRE=$NOMBRE  # Define una variable de entorno
     volumes:
-      - $HOME/contador.txt:/usr/share/app/contador.txt  # Mantiene el archivo contador.txt persistente
+      - .contador.txt:/usr/share/app/contador.txt  # Mantiene el archivo contador.txt persistente
     restart: unless-stopped  # Reinicia el contenedor si falla
