@@ -64,7 +64,7 @@ pipeline {
                 stage ('Despliegue en el VPS'){
                     steps{
                         sshagent(credentials : ['Pignite']) {
-                        sh 'ssh -o StrictHostKeyChecking=no debian@pignite.javihuete.site "cd prueba_icdc && git pull && docker compose down && docker pull fjhuete/icdc:latest && docker compose up -d && docker image prune -f"'
+                        sh 'ssh -o StrictHostKeyChecking=no debian@pignite.javihuete.site "cd prueba_icdc && git pull && docker compose down -v && docker pull fjhuete/icdc:latest && docker compose up -d && docker image prune -f"'
                         }
                     }
                 }
